@@ -1,8 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { changeCity } from '../../redux/citySlice';
 
 const Button = ({ value }) => {
-  return <button>{value}</button>;
+  const dispatch = useDispatch();
+
+  function selectCity(value) {
+    dispatch(changeCity(value));
+  }
+
+  return (
+    <button value={value} onClick={(e) => selectCity(e.target.value)}>
+      {value}
+    </button>
+  );
 };
 
 export default Button;
