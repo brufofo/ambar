@@ -1,13 +1,39 @@
-import React from 'react';
-import Button from '../../components/Button/Button';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeCity, selectCity } from '../../redux/citySlice';
+import { getWeatherByCityName } from '../../api/openWeather';
+import WeatherBox from '../../components/Weather/Weather';
 
 const MainPage = () => {
+  const dispatch = useDispatch();
+
+  const [selectedCityData, setSelectedCityData] = useState(useSelector(selectCity));
+
+  async function handleCity(value) {
+    try {
+      const data = await getWeatherByCityName(value);
+      dispatch(changeCity(data));
+      setSelectedCityData({ name: data.name, ...data.main });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
-    <>
-      <Button value="City 1"></Button>
-      <Button value="City 2"></Button>
-      <Button value="City 3"></Button>
-    </>
+    <div className="main-container">
+      <div className="button-container" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <button value="London" onClick={(e) => handleCity(e.target.value)}>
+          London
+        </button>
+        <button value="sao carlos" onClick={(e) => handleCity(e.target.value)}>
+          Sao Carlos
+        </button>
+        <button value="Tokyo" onClick={(e) => handleCity(e.target.value)}>
+          Tokyo
+        </button>
+      </div>
+      <WeatherBox cityData={selectedCityData} />
+    </div>
   );
 };
 

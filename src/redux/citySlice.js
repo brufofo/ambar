@@ -4,16 +4,15 @@ export const slice = createSlice({
   name: 'city',
   initialState: {
     name: '',
-    temperature: '',
-    min: '',
-    max: '',
-    image: ''
+    temp: 0,
+    temp_min: 0,
+    temp_max: 0
   },
+
   reducers: {
     changeCity(state, { payload }) {
-      //consume weather api bellow
-
-      return { ...state, name: payload };
+      console.log(payload);
+      return { name: payload.name, ...payload.main };
     }
   }
 });
