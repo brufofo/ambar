@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCity, selectCity } from '../../redux/citySlice';
 import { getWeatherByCityName } from '../../api/openWeather';
-import WeatherBox from '../../components/Weather/Weather';
+import WeatherBox from '../../components/WeatherBox/WeatherBox';
 
 const MainPage = () => {
   const dispatch = useDispatch();
