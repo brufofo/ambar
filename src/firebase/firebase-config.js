@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAfXqtHW3KuLN4GbRkVF8k_gfWUBhUoj6k',
-  authDomain: 'ambar-tech.firebaseapp.com',
-  projectId: 'ambar-tech',
-  storageBucket: 'ambar-tech.appspot.com',
-  messagingSenderId: '35980920923',
-  appId: '1:35980920923:web:6194cb337f63351c0d577e',
-  measurementId: 'G-KD8399RBRB'
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
+  measurementId: process.env.REACT_APP_MEASUREMENTID
 };
 
 const app = initializeApp(firebaseConfig);

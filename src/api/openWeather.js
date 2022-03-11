@@ -1,9 +1,7 @@
 import axios from 'axios';
-// import { useDispatch } from 'react-redux';
-// import { changeCity } from '../redux/citySlice';
 
 const URL = 'https://api.openweathermap.org/data/2.5/weather';
-const API_KEY = '0c6884cb2b8eec8f2c9ad9f739a35feb';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export async function getWeatherByCityName(city) {
   const { data } = await axios.get(URL, {
@@ -13,6 +11,16 @@ export async function getWeatherByCityName(city) {
       APPID: API_KEY
     }
   });
+  const newData = {
+    name: data.name,
+    cityId: data.id,
+    icon: data.weather[0]?.icon,
+    iconId: data.weather[0]?.id,
+    country: data.sys.country,
+    temp: data.main.temp,
+    temp_min: data.main.temp_min,
+    temp_max: data.main.temp_max
+  };
 
-  return data;
+  return newData;
 }
