@@ -1,3 +1,7 @@
+### `DISCLAIMER`
+
+I have not implemented the tests in the system.
+
 ### `how to run`
  
  In the project directory, create a file named as '.env' and put the information that will be avaible at the end of this README;
