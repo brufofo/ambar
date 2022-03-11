@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectCity } from '../../redux/citySlice';
+import './SpikeTemperaturePage.css';
 
 const SpikeTemperaturePage = () => {
   const navigate = useNavigate();
@@ -30,14 +31,24 @@ const SpikeTemperaturePage = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center ' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center ',
+        height: ' 100vh',
+        justifyContent: 'center'
+      }}
+    >
       {
-        <div>
+        <div className="spike-container">
           <p>Minima: {min ? `${min.name} - ${min.temp_min.toFixed()} °C` : 'no data'}</p>
           <p>Maxima: {max ? `${max.name} - ${max.temp_max.toFixed()} °C` : 'no data'}</p>
         </div>
       }
-      <button onClick={() => navigate('/')}>Back</button>
+      <button className="spike-button" onClick={() => navigate('/')}>
+        Back
+      </button>
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { getWeatherByCityName } from '../../api/openWeather';
 import WeatherBox from '../../components/WeatherBox/WeatherBox';
 import { useNavigate } from 'react-router-dom';
 import { createObserver } from '../../firebase/utils';
+import './MainPage.css';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -32,22 +33,35 @@ const MainPage = () => {
   return (
     <div
       className="main-container"
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center ' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center ',
+        height: '100vh',
+        justifyContent: 'center'
+      }}
     >
       <div className="button-container" style={{ display: 'flex', gap: '10px' }}>
-        <button value="London" onClick={(e) => handleCity(e.target.value)}>
+        <button className="main-button" value="London" onClick={(e) => handleCity(e.target.value)}>
           London
         </button>
-        <button value="sao carlos" onClick={(e) => handleCity(e.target.value)}>
+        <button
+          className="main-button"
+          value="sao carlos"
+          onClick={(e) => handleCity(e.target.value)}
+        >
           São Carlos
         </button>
-        <button value="Tokyo" onClick={(e) => handleCity(e.target.value)}>
+        <button className="main-button" value="Tokyo" onClick={(e) => handleCity(e.target.value)}>
           Tokyo
         </button>
       </div>
       <WeatherBox cityData={reduxStateCity.list?.[targetCity]} />
       {Object.keys(reduxStateCity).length > 0 && (
-        <button onClick={() => navigate('/average')}>Show average</button>
+        <button className="main-button " onClick={() => navigate('/average')}>
+          {/* <span style={{ background: 'rgb(14 172 153 )' }}>Show average</span> */}
+          Show Average
+        </button>
       )}
     </div>
   );
