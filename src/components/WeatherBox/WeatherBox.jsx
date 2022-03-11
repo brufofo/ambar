@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './WeatherBox.css';
 
 const WeatherBox = ({ cityData }) => {
   return (
@@ -7,21 +8,7 @@ const WeatherBox = ({ cityData }) => {
       {!cityData ? (
         <h1 style={{ color: 'white' }}>Please select a city to load some data..</h1>
       ) : (
-        <div
-          style={{
-            height: '400px',
-            width: '400px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            position: 'relative',
-            margin: '10px',
-            borderRadius: '16px',
-            background: 'linear-gradient(45deg, rgba(3,3,3,1) 0%, rgba(40,38,38,1) 100%)',
-            color: 'white',
-            border: '1px solid #777777'
-          }}
-        >
+        <div className="container">
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h1>{cityData.name + '-' + cityData.country}</h1>
             <div>
@@ -31,15 +18,7 @@ const WeatherBox = ({ cityData }) => {
               ></img>
             </div>
           </div>
-          <div
-            style={{
-              display: 'flex',
-
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '0px 16px'
-            }}
-          >
+          <div className="container-info">
             <div>
               <p>Max: {cityData.temp_max.toFixed()} °C </p>
               <p>Min: {cityData.temp_min.toFixed()} °C </p>

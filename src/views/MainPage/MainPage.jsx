@@ -31,16 +31,7 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div
-      className="main-container"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center ',
-        height: '100vh',
-        justifyContent: 'center'
-      }}
-    >
+    <div className="main-container">
       <div className="button-container" style={{ display: 'flex', gap: '10px' }}>
         <button className="main-button" value="London" onClick={(e) => handleCity(e.target.value)}>
           London
@@ -59,7 +50,6 @@ const MainPage = () => {
       <WeatherBox cityData={reduxStateCity.list?.[targetCity]} />
       {Object.keys(reduxStateCity).length > 0 && (
         <button className="main-button " onClick={() => navigate('/average')}>
-          {/* <span style={{ background: 'rgb(14 172 153 )' }}>Show average</span> */}
           Show Average
         </button>
       )}
