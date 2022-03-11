@@ -48,7 +48,7 @@ REACT_APP_API_KEY = '0c6884cb2b8eec8f2c9ad9f739a35feb'
  
  PropTypes
  
- ### `how to run `
+
  
  
  
