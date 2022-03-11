@@ -4,7 +4,7 @@ I have not implemented the tests in the system.
 
 ### `how to run`
  
- In the project directory, create a file named as '.env' and put the information that will be avaible at the end of this README;
+ In the project directory, create a file named as '.env' and put the information that is be avaible in the email;
   
  In the project directory, runs **'yarn'** or **'npm i'** to install project`s dependencies then..
  
