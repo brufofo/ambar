@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectCity } from '../../redux/citySlice';
 
-const AveragePage = () => {
+const SpikeTemperaturePage = () => {
   const navigate = useNavigate();
   const { list: reduxCity } = useSelector(selectCity);
 
@@ -18,7 +18,6 @@ const AveragePage = () => {
       const minAverage = Object.keys(reduxCity).reduce((prev, curr) => {
         return reduxCity[prev]?.temp_min < reduxCity[curr]?.temp_min ? prev : curr;
       });
-      console.log(minAverage);
       setMin(reduxCity[minAverage]);
       setMax(reduxCity[maxAverage]);
     } catch (error) {
@@ -30,22 +29,17 @@ const AveragePage = () => {
     calculeMinMax();
   }, []);
 
-  useEffect(() => {
-    console.log(min);
-  }, [min]);
-
   return (
-    <div>
-      <button onClick={() => navigate('/')}>Back</button>
-
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center ' }}>
       {
         <div>
-          <p>Minima: {min ? `${min.name} - ${min.temp_min} °C` : 'no data'}</p>
-          <p>Maxima: {max ? `${max.name} - ${max.temp_max} °C` : 'no data'}</p>
+          <p>Minima: {min ? `${min.name} - ${min.temp_min.toFixed()} °C` : 'no data'}</p>
+          <p>Maxima: {max ? `${max.name} - ${max.temp_max.toFixed()} °C` : 'no data'}</p>
         </div>
       }
+      <button onClick={() => navigate('/')}>Back</button>
     </div>
   );
 };
 
-export default AveragePage;
+export default SpikeTemperaturePage;

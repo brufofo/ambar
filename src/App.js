@@ -1,7 +1,7 @@
 import './App.css';
 import MainPage from './views/MainPage/MainPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AveragePage from './views/AveragePage/AveragePage';
+import SpikeTemperaturePage from './views/SpikeTemperaturePage/SpikeTemperaturePage';
 
 function App() {
   // return <MainPage></MainPage>;
@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/average" element={<AveragePage />} />
+        <Route path="/average" element={<SpikeTemperaturePage />} />
       </Routes>
     </Router>
   );

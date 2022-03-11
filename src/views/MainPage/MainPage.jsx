@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCity, changeCityLocal, selectCity, setCityId } from '../../redux/citySlice';
 import { getWeatherByCityName } from '../../api/openWeather';
@@ -30,13 +30,16 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className="main-container">
+    <div
+      className="main-container"
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center ' }}
+    >
       <div className="button-container" style={{ display: 'flex', gap: '10px' }}>
         <button value="London" onClick={(e) => handleCity(e.target.value)}>
           London
         </button>
         <button value="sao carlos" onClick={(e) => handleCity(e.target.value)}>
-          Sao Carlos
+          São Carlos
         </button>
         <button value="Tokyo" onClick={(e) => handleCity(e.target.value)}>
           Tokyo

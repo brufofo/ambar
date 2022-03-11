@@ -11,10 +11,11 @@ const WeatherBox = ({ cityData }) => {
           style={{
             height: '400px',
             width: '400px',
-            backgroundColor: 'gray',
+            backgroundColor: '#8080804d',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            position: 'relative'
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -23,7 +24,7 @@ const WeatherBox = ({ cityData }) => {
               style={{ width: '50px' }}
               src={`http://openweathermap.org/img/wn/${cityData.icon}@2x.png`}
             ></img>
-            <h1>{cityData.temp + ' °C'}</h1>
+            <h1>{cityData.temp.toFixed() + ' °C'}</h1>
           </div>
           <div
             style={{
@@ -33,8 +34,8 @@ const WeatherBox = ({ cityData }) => {
               padding: '0px 10px'
             }}
           >
-            <p>Max: {cityData.temp_max} °C </p>
-            <p>Min: {cityData.temp_min} °C </p>
+            <p>Max: {cityData.temp_max.toFixed()} °C </p>
+            <p>Min: {cityData.temp_min.toFixed()} °C </p>
           </div>
         </div>
       )}
@@ -52,9 +53,6 @@ WeatherBox.propTypes = {
     temp: PropTypes.number,
     temp_min: PropTypes.number,
     temp_max: PropTypes.number,
-    feels_like: PropTypes.number,
-    pressure: PropTypes.number,
-    humidity: PropTypes.number,
     cityId: PropTypes.number
   })
 };
