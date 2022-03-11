@@ -24,6 +24,10 @@ You may also see any lint errors in the console.
  Firebase
  
  React
+ 
  React Redux
+ 
  React Router Dom 
+ 
  PropTypes
+ 
