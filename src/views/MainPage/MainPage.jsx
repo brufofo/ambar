@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCity, selectCity } from '../../redux/citySlice';
 import { getWeatherByCityName } from '../../api/openWeather';
@@ -13,9 +13,9 @@ const MainPage = () => {
     try {
       const data = await getWeatherByCityName(value);
       dispatch(changeCity(data));
-      setSelectedCityData({ name: data.name, ...data.main });
+      setSelectedCityData({ name: data.name, cityId: data.id, ...data.main });
     } catch (error) {
-      console.log(error);
+      console.log('error', error);
     }
   }
 
@@ -33,6 +33,7 @@ const MainPage = () => {
         </button>
       </div>
       <WeatherBox cityData={selectedCityData} />
+      <button>Show average</button>
     </div>
   );
 };

@@ -3,7 +3,6 @@ import cityReducer from './citySlice';
 
 export default configureStore({
   reducer: {
-    //add reducer here
     city: cityReducer
   }
 });

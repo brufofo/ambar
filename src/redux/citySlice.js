@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { handleFirebase } from '../firebase/utils';
 
 export const slice = createSlice({
   name: 'city',
@@ -12,7 +13,9 @@ export const slice = createSlice({
   reducers: {
     changeCity(state, { payload }) {
       console.log(payload);
-      return { name: payload.name, ...payload.main };
+      const currentCityData = { name: payload.name, cityId: payload.id, ...payload.main };
+      handleFirebase(currentCityData);
+      return currentCityData;
     }
   }
 });
