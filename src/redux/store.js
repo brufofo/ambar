@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cityReducer from './citySlice';
+import targetCity from './targetSlice';
 
 export default configureStore({
   reducer: {
-    //add reducer here
     city: cityReducer
+    // target: targetCity
   }
 });

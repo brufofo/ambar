@@ -1,27 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCity, selectCity } from '../../redux/citySlice';
+import { changeCity, changeCityLocal, selectCity, setCityId } from '../../redux/citySlice';
 import { getWeatherByCityName } from '../../api/openWeather';
 import WeatherBox from '../../components/WeatherBox/WeatherBox';
+import { useNavigate } from 'react-router-dom';
+import { createObserver } from '../../firebase/utils';
 
 const MainPage = () => {
   const dispatch = useDispatch();
-
-  const [selectedCityData, setSelectedCityData] = useState(useSelector(selectCity));
+  const navigate = useNavigate();
+  const reduxStateCity = useSelector(selectCity);
+  const targetCity = useSelector((state) => state.city.cityId);
 
   async function handleCity(value) {
     try {
       const data = await getWeatherByCityName(value);
       dispatch(changeCity(data));
-      setSelectedCityData({ name: data.name, ...data.main });
+      dispatch(setCityId(data.cityId));
     } catch (error) {
-      console.log(error);
+      console.log('error', error);
     }
   }
 
+  useEffect(() => {
+    const listener = createObserver((data) => dispatch(changeCityLocal(data)));
+    return () => {
+      listener();
+    };
+  }, []);
+
   return (
     <div className="main-container">
-      <div className="button-container" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+      <div className="button-container" style={{ display: 'flex', gap: '10px' }}>
         <button value="London" onClick={(e) => handleCity(e.target.value)}>
           London
         </button>
@@ -32,7 +42,10 @@ const MainPage = () => {
           Tokyo
         </button>
       </div>
-      <WeatherBox cityData={selectedCityData} />
+      <WeatherBox cityData={reduxStateCity.list?.[targetCity]} />
+      {Object.keys(reduxStateCity).length > 0 && (
+        <button onClick={() => navigate('/average')}>Show average</button>
+      )}
     </div>
   );
 };
