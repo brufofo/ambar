@@ -6,9 +6,9 @@ I have not implemented the tests in the system.
  
  In the project directory, create a file named as '.env' and put the information that will be avaible at the end of this README;
   
- In the project directory, runs **'yarn'** to install project`s dependencies then..
+ In the project directory, runs **'yarn'** or **'npm i'** to install project`s dependencies then..
  
- In the project directory, runs **'yarn start'** to execute the project.
+ In the project directory, runs **'yarn start'** or **'npm start'** to execute the project.
  
  the project will start running in http://localhost:3000/
  
